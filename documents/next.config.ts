@@ -1,6 +1,11 @@
 import type { NextConfig } from "next";
+import path from "path"; // Vergiss nicht, path zu importieren
 
 const nextConfig: NextConfig = {
+  // DAS HIER HINZUFÜGEN:
+  turbopack: {
+    root: __dirname, // Zwingt Turbopack, exakt im /documents-Ordner zu suchen
+  },
   async rewrites() {
     return [
       {
