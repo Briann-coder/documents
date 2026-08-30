@@ -19,7 +19,11 @@ jobs:
       - name: Install & Build
         run: |
           cd documents
-          npm ci
+          if [ -f package-lock.json ]; then
+            npm ci --omit=dev
+          else
+            npm install --omit=dev
+          fi
           npm run build
 
       - name: Trigger Plesk webhook

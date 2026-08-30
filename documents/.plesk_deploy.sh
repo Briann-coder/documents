@@ -6,11 +6,12 @@ set -e
 echo "Running Plesk deploy script in $(pwd)"
 export NODE_ENV=production
 
-# Install dependencies
+# Install dependencies: prefer `npm ci` when lockfile exists, otherwise `npm install`.
+# Use `--omit=dev` for production installs (replaces deprecated `--production` config).
 if [ -f package-lock.json ]; then
-  npm ci --production
+  npm ci --omit=dev
 else
-  npm install --production
+  npm install --omit=dev
 fi
 
 # Build Next app

@@ -1,13 +1,15 @@
 "use client";
-import { useState, useRef } from 'react';
+import React, { useState, useRef } from 'react';
+
+type UploadResult = { path?: string; error?: string } | null;
 
 export default function UploadApp() {
-  const [file, setFile] = useState<any>(null);
+  const [file, setFile] = useState<File | null>(null);
   const inputRef = useRef<HTMLInputElement | null>(null);
   const [subpath, setSubpath] = useState('');
-  const [result, setResult] = useState(null);
+  const [result, setResult] = useState<UploadResult>(null);
 
-  async function doUpload(e) {
+  async function doUpload(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     if (!file) return;
     const fd = new FormData();
@@ -26,7 +28,7 @@ export default function UploadApp() {
           ref={inputRef}
           type="file"
           name="file"
-          onChange={(e) => setFile(e.target.files?.[0] || null)}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFile(e.target.files?.[0] || null)}
           className="hidden"
           aria-hidden="true"
         />
@@ -40,7 +42,7 @@ export default function UploadApp() {
           </button>
           <div className="text-sm text-zinc-600">{file ? file.name : 'Keine Datei ausgewählt'}</div>
         </div>
-        <input placeholder="subpath (optional)" value={subpath} onChange={(e) => setSubpath(e.target.value)} className="border px-2 py-1" />
+        <input placeholder="subpath (optional)" value={subpath} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSubpath(e.target.value)} className="border px-2 py-1" />
         <button className="bg-black text-white px-3 py-2 rounded" type="submit">Upload</button>
       </form>
 
