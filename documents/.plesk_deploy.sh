@@ -1,36 +1,35 @@
 #!/bin/bash
 set -e
-# Plesk runs this script in the repository root after pulling changes.
-# Adjust paths if your app is in a subfolder.
+##!/bin/bash
+set -e
 
-# Move into `documents` subfolder if present (useful when repo root holds multiple projects)
-if [ -d documents ]; then
-  echo "Found 'documents' subfolder — switching into documents/"
-  cd documents
-else
-  echo "No documents subfolder found — running in repository root: $(pwd)"
-fi
+# 1. Direkt in das korrekte documents-Verzeichnis wechseln
+echo "Wechsle in das documents-Anwendungsverzeichnis..."
+cd /var/www/vhosts/jnc.de/sample.jnc.de/httpdocs/documents
 
+# 2. Umgebung auf Production setzen
 export NODE_ENV=production
 
-# Install dependencies: prefer `npm ci` when lockfile exists in current folder, otherwise `npm install`.
-# Use `--omit=dev` for production installs.
+# 3. Abhängigkeiten sauber installieren (behebt die npm-Warnung)
 if [ -f package-lock.json ]; then
+  echo "package-lock.json gefunden – nutze npm ci..."
   npm ci --omit=dev
 else
+  echo "Keine package-lock.json gefunden – nutze npm install..."
   npm install --omit=dev
 fi
 
-# Build Next app
+# 4. Next.js App bauen
+echo "Starte Next.js Build Prozess..."
 npm run build
 
-# Start / restart with pm2 if available
+# 5. App mit PM2 oder im Hintergrund neu starten
 if command -v pm2 >/dev/null 2>&1; then
-  echo "Restarting with pm2..."
-  pm2 startOrRestart ecosystem.config.js --env production || pm2 start npm --name documents -- start
+  echo "Starte/Prüfe App mit PM2..."
+  pm2 startOrRestart ecosystem.config.js --env production || pm2 start npm --name "next-app-documents" -- start
 else
-  echo "pm2 not found — starting npm start in background"
+  echo "PM2 nicht gefunden – starte npm start im Hintergrund (nohup)..."
   nohup npm start >/dev/null 2>&1 &
 fi
 
-echo "Deploy finished"
+echo "Deploy erfolgreich beendet!"
