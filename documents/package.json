@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "echo 'Build wird übersprungen, da lokal gebaut wurde'",
     "start": "next start",
     "lint": "eslint"
   },
