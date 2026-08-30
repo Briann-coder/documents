@@ -1,7 +1,10 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  output: "standalone", // <-- DIESE ZEILE HINZUFÜGEN
+  // KORREKT FÜR NEXT.JS 16: Auf oberster Ebene ohne "experimental"
+  turbopack: {
+    root: __dirname, // Absolute Pfadzuweisung für den Plesk-Unterordner
+  },
   async rewrites() {
     return [
       {
