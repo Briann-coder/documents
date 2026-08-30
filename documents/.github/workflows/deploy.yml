@@ -1,0 +1,29 @@
+name: Deploy to Plesk
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install & Build
+        run: |
+          cd documents
+          npm ci
+          npm run build
+
+      - name: Trigger Plesk webhook
+        if: ${{ secrets.PLESK_WEBHOOK_URL }}
+        run: |
+          echo "Triggering Plesk webhook..."
+          curl -s -X POST -H "Content-Type: application/json" --data '{"ref":"refs/heads/main"}' "${{ secrets.PLESK_WEBHOOK_URL }}"
