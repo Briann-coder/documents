@@ -1,0 +1,6 @@
+{"timestamp":"00:00:02.813","source":"Server","level":"LOG","message":""}
+{"timestamp":"00:00:04.352","source":"Browser","level":"INFO","message":"Download the React DevTools for a better development experience: https://react.dev/link/react-devtools"}
+{"timestamp":"00:00:04.456","source":"Browser","level":"INFO","message":"Download the React DevTools for a better development experience: https://react.dev/link/react-devtools"}
+{"timestamp":"00:01:20.993","source":"Server","level":"LOG","message":"✓ Compiled in 97ms"}
+{"timestamp":"00:13:41.447","source":"Server","level":"WARN","message":"API resolved without sending a response for /api/upload, this may result in stalled requests."}
+{"timestamp":"03:04:13.653","source":"Browser","level":"INFO","message":"Download the React DevTools for a better development experience: https://react.dev/link/react-devtools"}
