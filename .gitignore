@@ -1,0 +1,11 @@
+# Ignore unused project folders
+dqsorder/
+liefermax/
+
+# Node / Next typical ignores
+node_modules/
+.next/
+dist/
+npm-debug.log*
+debug.log*
+.env
