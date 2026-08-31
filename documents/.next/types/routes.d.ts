@@ -5,7 +5,7 @@ type AppRoutes = "/" | "/storage" | "/upload-app"
 type PageRoutes = never
 type LayoutRoutes = "/"
 type RedirectRoutes = never
-type RewriteRoutes = "/upload-app" | "/upload-app/[[...path]]"
+type RewriteRoutes = never
 type Routes = AppRoutes | PageRoutes | LayoutRoutes | RedirectRoutes | RewriteRoutes
 
 
@@ -13,7 +13,6 @@ interface ParamMap {
   "/": {}
   "/storage": {}
   "/upload-app": {}
-  "/upload-app/[[...path]]": { "path"?: string[]; }
 }
 
 

@@ -1,22 +1,11 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  // KORREKT FÜR NEXT.JS 16: Auf oberster Ebene ohne "experimental"
-  turbopack: {
-    root: __dirname, // Absolute Pfadzuweisung für den Plesk-Unterordner
-  },
-  async rewrites() {
-    return [
-      {
-        source: "/upload-app/:path*",
-        destination: "http://localhost:3001/:path*",
-      },
-      {
-        source: "/upload-app",
-        destination: "http://localhost:3001/",
-      },
-    ];
-  },
+  // ZWINGT NEXT.JS ZU EINEM STATISCHEN HTML-EXPORT:
+  output: "export", 
+  
+  // Hinweis: Da es ein statischer Export ist, werden 'rewrites' serverseitig 
+  // nicht mehr von Next.js verarbeitet. (Das lösen wir gleich über Nginx!)
 };
 
 export default nextConfig;

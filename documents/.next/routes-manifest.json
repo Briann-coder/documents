@@ -18,18 +18,7 @@
   "onMatchHeaders": [],
   "rewrites": {
     "beforeFiles": [],
-    "afterFiles": [
-      {
-        "source": "/upload-app/:path*",
-        "destination": "http://localhost:3001/:path*",
-        "regex": "^/upload-app(?:/((?:[^/]+?)(?:/(?:[^/]+?))*))?(?:/)?$"
-      },
-      {
-        "source": "/upload-app",
-        "destination": "http://localhost:3001/",
-        "regex": "^/upload-app(?:/)?$"
-      }
-    ],
+    "afterFiles": [],
     "fallback": []
   },
   "dynamicRoutes": [],
