@@ -14,7 +14,7 @@ export default function Home() {
       </section>
 
       <section className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-        <Card title="Upload-App" href="/upload-app">Dateien hochladen und QR-Code generieren.</Card>
+        <Card title="Upload-App" href="/upload-app">Dateien hochladen und QR-Code  generieren.</Card>
       </section>
     </div>
   );
