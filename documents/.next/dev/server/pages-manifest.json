@@ -1,5 +1,4 @@
 {
-  "/api/upload": "pages/api/upload.js",
   "/api/upload/list": "pages/api/upload/list.js",
   "/api/upload/qrcode": "pages/api/upload/qrcode.js"
 }
