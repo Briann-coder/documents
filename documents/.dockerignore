@@ -1,0 +1,12 @@
+.next
+node_modules
+dist
+build
+npm-debug.log
+.env
+.env.local
+.env.development
+.DS_Store
+coverage
+**/.next/*
+**/node_modules/*

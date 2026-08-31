@@ -18,6 +18,9 @@ npm install --save @tailwindcss/postcss postcss tailwindcss
 # Next.js 16 Produktion-Build starten
 export NODE_ENV=production
 npm run build
+ 
+ # Symlink or copy public assets to webroot
+ cp -r ./public/* /var/www/vhosts/jnc.de/sample.jnc.de/httpdocs/
 
 # Start/Restart der App
 if command -v pm2 >/dev/null 2>&1; then

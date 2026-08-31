@@ -89,118 +89,155 @@ function StoragePage() {
     }, this);
 }
 function FileList({ items, prefix, onDeleted }) {
+    const [expanded, setExpanded] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])({});
+    const toggle = (path)=>setExpanded((s)=>({
+                ...s,
+                [path]: !s[path]
+            }));
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
         className: "space-y-2",
         children: items.map((it)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
-                className: "flex items-center justify-between border rounded p-2",
+                className: "border rounded p-2",
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "flex items-center justify-between",
                         children: [
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("strong", {
-                                children: it.name
-                            }, void 0, false, {
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("strong", {
+                                        children: it.name
+                                    }, void 0, false, {
+                                        fileName: "[project]/app/storage/page.tsx",
+                                        lineNumber: 50,
+                                        columnNumber: 15
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: "text-xs text-zinc-500",
+                                        children: it.type === 'file' ? `${(it.size / 1024).toFixed(1)} KB` : 'Ordner'
+                                    }, void 0, false, {
+                                        fileName: "[project]/app/storage/page.tsx",
+                                        lineNumber: 51,
+                                        columnNumber: 15
+                                    }, this)
+                                ]
+                            }, void 0, true, {
                                 fileName: "[project]/app/storage/page.tsx",
-                                lineNumber: 45,
+                                lineNumber: 49,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "text-xs text-zinc-500",
-                                children: it.type === 'file' ? `${(it.size / 1024).toFixed(1)} KB` : 'Ordner'
+                                className: "flex items-center gap-2",
+                                children: it.type === 'file' ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Fragment"], {
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
+                                            className: "text-sm text-blue-600",
+                                            href: `/api/upload/download?path=${encodeURIComponent(it.path)}`,
+                                            children: "Download"
+                                        }, void 0, false, {
+                                            fileName: "[project]/app/storage/page.tsx",
+                                            lineNumber: 56,
+                                            columnNumber: 19
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
+                                            className: "text-sm text-zinc-700",
+                                            href: `/api/upload/qrcode?path=${encodeURIComponent(it.path)}`,
+                                            target: "_blank",
+                                            rel: "noreferrer",
+                                            children: "QR anzeigen"
+                                        }, void 0, false, {
+                                            fileName: "[project]/app/storage/page.tsx",
+                                            lineNumber: 57,
+                                            columnNumber: 19
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
+                                            className: "text-sm text-zinc-700",
+                                            href: `/api/upload/qrcode?path=${encodeURIComponent(it.path)}&download=1`,
+                                            children: "QR herunterladen"
+                                        }, void 0, false, {
+                                            fileName: "[project]/app/storage/page.tsx",
+                                            lineNumber: 58,
+                                            columnNumber: 19
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                            className: "text-sm text-red-600",
+                                            onClick: async ()=>{
+                                                if (!confirm(`Datei "${it.name}" wirklich löschen?`)) return;
+                                                try {
+                                                    const res = await fetch(`/api/upload/delete?path=${encodeURIComponent(it.path)}`, {
+                                                        method: 'DELETE'
+                                                    });
+                                                    const json = await res.json();
+                                                    if (res.ok) {
+                                                        onDeleted && onDeleted();
+                                                    } else {
+                                                        alert('Löschen fehlgeschlagen: ' + (json.error || res.status));
+                                                    }
+                                                } catch (e) {
+                                                    alert('Löschen fehlgeschlagen');
+                                                }
+                                            },
+                                            children: "Löschen"
+                                        }, void 0, false, {
+                                            fileName: "[project]/app/storage/page.tsx",
+                                            lineNumber: 59,
+                                            columnNumber: 19
+                                        }, this)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "[project]/app/storage/page.tsx",
+                                    lineNumber: 55,
+                                    columnNumber: 17
+                                }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Fragment"], {
+                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                        className: "text-sm text-blue-600",
+                                        onClick: ()=>toggle(it.path),
+                                        children: expanded[it.path] ? 'Ordner schließen' : 'Ordner öffnen'
+                                    }, void 0, false, {
+                                        fileName: "[project]/app/storage/page.tsx",
+                                        lineNumber: 81,
+                                        columnNumber: 19
+                                    }, this)
+                                }, void 0, false, {
+                                    fileName: "[project]/app/storage/page.tsx",
+                                    lineNumber: 80,
+                                    columnNumber: 17
+                                }, this)
                             }, void 0, false, {
                                 fileName: "[project]/app/storage/page.tsx",
-                                lineNumber: 46,
+                                lineNumber: 53,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/storage/page.tsx",
-                        lineNumber: 44,
+                        lineNumber: 48,
                         columnNumber: 11
                     }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "flex items-center gap-2",
-                        children: it.type === 'file' ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Fragment"], {
-                            children: [
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
-                                    className: "text-sm text-blue-600",
-                                    href: `/api/upload/download?path=${encodeURIComponent(it.path)}`,
-                                    children: "Download"
-                                }, void 0, false, {
-                                    fileName: "[project]/app/storage/page.tsx",
-                                    lineNumber: 51,
-                                    columnNumber: 17
-                                }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
-                                    className: "text-sm text-zinc-700",
-                                    href: `/api/upload/qrcode?path=${encodeURIComponent(it.path)}`,
-                                    target: "_blank",
-                                    rel: "noreferrer",
-                                    children: "QR anzeigen"
-                                }, void 0, false, {
-                                    fileName: "[project]/app/storage/page.tsx",
-                                    lineNumber: 52,
-                                    columnNumber: 17
-                                }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
-                                    className: "text-sm text-zinc-700",
-                                    href: `/api/upload/qrcode?path=${encodeURIComponent(it.path)}&download=1`,
-                                    children: "QR herunterladen"
-                                }, void 0, false, {
-                                    fileName: "[project]/app/storage/page.tsx",
-                                    lineNumber: 53,
-                                    columnNumber: 17
-                                }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                    className: "text-sm text-red-600",
-                                    onClick: async ()=>{
-                                        if (!confirm(`Datei "${it.name}" wirklich löschen?`)) return;
-                                        try {
-                                            const res = await fetch(`/api/upload/delete?path=${encodeURIComponent(it.path)}`, {
-                                                method: 'DELETE'
-                                            });
-                                            const json = await res.json();
-                                            if (res.ok) {
-                                                onDeleted && onDeleted();
-                                            } else {
-                                                alert('Löschen fehlgeschlagen: ' + (json.error || res.status));
-                                            }
-                                        } catch (e) {
-                                            alert('Löschen fehlgeschlagen');
-                                        }
-                                    },
-                                    children: "Löschen"
-                                }, void 0, false, {
-                                    fileName: "[project]/app/storage/page.tsx",
-                                    lineNumber: 54,
-                                    columnNumber: 17
-                                }, this)
-                            ]
-                        }, void 0, true, {
-                            fileName: "[project]/app/storage/page.tsx",
-                            lineNumber: 50,
-                            columnNumber: 15
-                        }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                            className: "text-sm text-zinc-500",
-                            children: "Ordner"
+                    it.type === 'dir' && expanded[it.path] && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "mt-2 pl-4",
+                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(FileList, {
+                            items: it.children || [],
+                            prefix: it.path,
+                            onDeleted: onDeleted
                         }, void 0, false, {
                             fileName: "[project]/app/storage/page.tsx",
-                            lineNumber: 75,
+                            lineNumber: 91,
                             columnNumber: 15
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/app/storage/page.tsx",
-                        lineNumber: 48,
-                        columnNumber: 11
+                        lineNumber: 90,
+                        columnNumber: 13
                     }, this)
                 ]
             }, it.path, true, {
                 fileName: "[project]/app/storage/page.tsx",
-                lineNumber: 43,
+                lineNumber: 47,
                 columnNumber: 9
             }, this))
     }, void 0, false, {
         fileName: "[project]/app/storage/page.tsx",
-        lineNumber: 41,
+        lineNumber: 45,
         columnNumber: 5
     }, this);
 }
