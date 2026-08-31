@@ -36,63 +36,80 @@ export default function StoragePage() {
   );
 }
 
-function FileList({ items, prefix, onDeleted }: { items: any[]; prefix: string; onDeleted?: () => void }) {
+function FileList({ items, prefix, onDeleted, nested = false }: { items: any[]; prefix: string; onDeleted?: () => void; nested?: boolean }) {
   const [expanded, setExpanded] = useState<Record<string, boolean>>({});
 
   const toggle = (path: string) => setExpanded((s) => ({ ...s, [path]: !s[path] }));
 
+  const containerClass = nested ? 'space-y-2' : 'grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3';
+  const cardBase = 'bg-white/90 hover:shadow-lg transition rounded-lg p-3 flex flex-col items-start gap-2 text-sm min-w-0';
+
   return (
-    <ul className="space-y-2">
+    <div className={containerClass}>
       {items.map((it) => (
-        <li key={it.path} className="border rounded p-2">
-          <div className="flex items-center justify-between">
-            <div>
-              <strong>{it.name}</strong>
-              <div className="text-xs text-zinc-500">{it.type === 'file' ? `${(it.size/1024).toFixed(1)} KB` : 'Ordner'}</div>
-            </div>
-            <div className="flex items-center gap-2">
-              {it.type === 'file' ? (
-                <>
-                  <a className="text-sm text-blue-600" href={`/api/upload/download?path=${encodeURIComponent(it.path)}`}>Download</a>
-                  <a className="text-sm text-zinc-700" href={`/api/upload/qrcode?path=${encodeURIComponent(it.path)}`} target="_blank" rel="noreferrer">QR anzeigen</a>
-                  <a className="text-sm text-zinc-700" href={`/api/upload/qrcode?path=${encodeURIComponent(it.path)}&download=1`}>QR herunterladen</a>
-                  <button
-                    className="text-sm text-red-600"
-                    onClick={async () => {
-                      if (!confirm(`Datei "${it.name}" wirklich löschen?`)) return;
-                      try {
-                        const res = await fetch(`/api/upload/delete?path=${encodeURIComponent(it.path)}`, { method: 'DELETE' });
-                        const json = await res.json();
-                        if (res.ok) {
-                          onDeleted && onDeleted();
-                        } else {
-                          alert('Löschen fehlgeschlagen: ' + (json.error || res.status));
-                        }
-                      } catch (e) {
-                        alert('Löschen fehlgeschlagen');
-                      }
-                    }}
-                  >
-                    Löschen
-                  </button>
-                </>
+        <div key={it.path} className={cardBase}>
+          <div className="flex items-center gap-2 w-full">
+            <div className="flex-shrink-0">
+              {it.type === 'dir' ? (
+                <svg className="w-6 h-6 text-yellow-500" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M3 7a2 2 0 0 1 2-2h4l2 2h6a2 2 0 0 1 2 2v6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
               ) : (
-                <>
-                  <button className="text-sm text-blue-600" onClick={() => toggle(it.path)}>
-                    {expanded[it.path] ? 'Ordner schließen' : 'Ordner öffnen'}
-                  </button>
-                </>
+                <svg className="w-5 h-5 text-gray-400" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
               )}
+            </div>
+              <div className={nested ? 'min-w-0' : 'truncate min-w-0'}>
+                <div className={nested ? 'font-medium break-words' : 'font-medium truncate'}>{it.name}</div>
+              <div className="text-xs text-zinc-400">{it.type === 'file' ? `${(it.size/1024).toFixed(1)} KB` : 'Ordner'}</div>
             </div>
           </div>
 
+          <div className="flex items-center gap-2 mt-2 w-full">
+            {it.type === 'file' ? (
+              <>
+                <a className="flex-1 text-center px-2 py-1 bg-blue-50 text-blue-700 rounded-md text-xs hover:bg-blue-100" href={`/api/upload/download?path=${encodeURIComponent(it.path)}`}>Download</a>
+                <a className="px-2 py-1 bg-zinc-50 text-zinc-700 rounded-md text-xs hover:bg-zinc-100" href={`/api/upload/qrcode?path=${encodeURIComponent(it.path)}`} target="_blank" rel="noreferrer">QR</a>
+                <button
+                  className="px-2 py-1 bg-red-50 text-red-700 rounded-md text-xs hover:bg-red-100"
+                  onClick={async () => {
+                    if (!confirm(`Datei "${it.name}" wirklich löschen?`)) return;
+                    try {
+                      const res = await fetch(`/api/upload/delete?path=${encodeURIComponent(it.path)}`, { method: 'DELETE' });
+                      const json = await res.json();
+                      if (res.ok) {
+                        onDeleted && onDeleted();
+                      } else {
+                        alert('Löschen fehlgeschlagen: ' + (json.error || res.status));
+                      }
+                    } catch (e) {
+                      alert('Löschen fehlgeschlagen');
+                    }
+                  }}
+                >
+                  Löschen
+                </button>
+              </>
+            ) : (
+              <>
+                <button
+                  className="w-full px-2 py-1 bg-emerald-50 text-emerald-700 rounded-md text-xs hover:bg-emerald-100"
+                  onClick={() => toggle(it.path)}
+                >
+                  {expanded[it.path] ? 'Schließen' : 'Öffnen'}
+                </button>
+              </>
+            )}
+          </div>
+
           {it.type === 'dir' && expanded[it.path] && (
-            <div className="mt-2 pl-4">
-              <FileList items={it.children || []} prefix={it.path} onDeleted={onDeleted} />
+            <div className="mt-2 w-full">
+              <FileList items={it.children || []} prefix={it.path} onDeleted={onDeleted} nested={true} />
             </div>
           )}
-        </li>
+        </div>
       ))}
-    </ul>
+    </div>
   );
 }
