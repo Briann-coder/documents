@@ -6,7 +6,7 @@ export default function Home() {
       <section className="rounded-xl bg-gradient-to-r from-white to-zinc-50 p-8 shadow-sm">
         <div className="max-w-4xl mx-auto">
           <h1 className="text-3xl font-bold">Welcome to Documents</h1>
-          <p className="mt-2 text-zinc-600">Zentrale Anlaufstelle für kleine Apps und Tools.</p>
+          <p className="mt-2 text-zinc-600">Zentrale Anlaufstelle für das Upload von Dateien.</p>
           <div className="mt-4 flex items-center gap-3">
             <Link href="/upload-app" className="px-4 py-2 bg-black text-white rounded-md">Upload</Link>
           </div>
